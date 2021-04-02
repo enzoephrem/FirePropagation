@@ -10,9 +10,9 @@ Assuming that the fire will be passed to a nearby forest cell if one of it's fou
 
 ```diff
 
-            time: t         | <p style="color=white"> empty </p>  |+forest |+forest |+forest |
+            time: t         | empty  |+forest |+forest |+forest |
                             | -fire  |+forest | empty  |+forest | 
-                            |+forest |+forest | forest | empty  |
+                            | + forest |+forest | forest | empty  |
                             |+forest |+forest | forest |+forest |
                             | empty  |+forest |  fire  |+forest |
                             |+forest |+forest |+forest |+forest |
