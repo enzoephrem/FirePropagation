@@ -42,6 +42,26 @@ int check_neighbors(block& b)
 
 void world_init(World& w)
 {
+
+    w.size = 100;
+    w.forest_nb = 0.5 * w.size;
+
+    for (int i = 0; i < w.size; i++)
+    {
+        for (int j = 0; j < w.size; j++)
+        {
+            w.blocks[i][j].x1 = j * w.DIMW/w.size;
+            w.blocks[i][j].x2 = w.blocks[i][j].x1 + w.DIMW/w.size;
+            w.blocks[i][j].y1 = i * w.DIMW/w.size;
+            w.blocks[i][j].y2 = w.blocks[i][j].y1 + w.DIMW/w.size;
+            w.blocks[i][j].israining = false;
+            w.blocks[i][j].onfire = false;
+            w.blocks[i][j].type = 0;
+        }
+    }
+
+    
+
 }
 
 void world_draw(World w)

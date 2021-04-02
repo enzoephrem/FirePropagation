@@ -50,6 +50,7 @@ void setrain(block& cell);
 
 struct World
 {
+    int DIMW;
     int size;
     int forest_nb;
     block blocks[MAX][MAX];
