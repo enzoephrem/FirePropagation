@@ -11,11 +11,14 @@ Assuming that the fire will be passed to a nearby forest cell if one of it's fou
 ```diff
 
 
-            time: t         | empty  |+forest |+forest |+forest |
+            time: t 
+
+                            | empty  |+forest |+forest |+forest |
+                            |--------|--------|--------|--------|
                             | -fire  |+forest | empty  |+forest | 
-                            |+forest |+forest | forest | empty  |
-                            |+forest |+forest | forest |+forest |
-                            | empty  |+forest |  fire  |+forest |
+                            |+forest |+forest |+forest | empty  |
+                            |+forest |+forest |+forest |+forest |
+                            | empty  |+forest | -fire  |+forest |
                             |+forest |+forest |+forest |+forest |
                             |+forest |+forest |+forest | empty  |
             
@@ -23,9 +26,9 @@ Assuming that the fire will be passed to a nearby forest cell if one of it's fou
                             |  #ash  | -fire  | empty  |+forest | 
                             | -fire  |+forest |+forest | empty  |
                             |+forest |+forest | -fire  |+forest |
-                            | empty  | -fire  |  ash   | -fire  |
+                            | empty  | -fire  |  #ash  | -fire  |
                             |+forest |+forest | -fire  |+forest |
-                            |+forest |+forest | forest | empty  |
+                            |+forest |+forest |+forest | empty  |
 ```
 
 
@@ -39,7 +42,7 @@ First of all, let's begin by initializing the World having **size** number of bl
 
 Let's initialize the size of the world **size** (here 50), the number of forest **nb_forest** (around a density of 50%) and DIMW the size of the window.
 
-```
+```c++
 void world_init(World& w, int DIMW)
 {
     int tmp_x, tmp_y;
@@ -51,7 +54,7 @@ void world_init(World& w, int DIMW)
 
 Then with a simple itteration through every block we will initialize them to its corresponding coordinates. And have every attribute initialized to false and 0 respectivly for *israining*/*onfire* and type.
 
-```
+```c++
     for (int i = 0; i < w.size; i++)
     {
         for (int j = 0; j < w.size; j++)
@@ -68,7 +71,7 @@ Then with a simple itteration through every block we will initialize them to its
 ```
 
 Now that we have all blocks empty and not on fire and with no rain, let's add the forst type blocks. Picking randomly a block from the World till it's empty and changing it's type to 2 and this **forest_nb** times.
-```
+```c++
     for (int i = 0; i < w.forest_nb; i++)
     {
         do
@@ -78,9 +81,26 @@ Now that we have all blocks empty and not on fire and with no rain, let's add th
         }while(w.blocks[tmp_x][tmp_y].type != 0);
         w.blocks[tmp_x][tmp_y].type = 2;
     }
-
 }
 ```
+
+Drawing the world is a pretty simple concept:
+
+```c++
+            switch(w.blocks[i][j].type)
+            {
+                case 0:
+                    color(255, 255, 255); // empty -> white
+                    break;
+                case 1:
+                    color(45, 45, 45); // ash -> grey
+                case 2:
+                    if (w.blocks[i][j].onfire) color(255, 0, 0); // forest on fire -> red
+                    else color(0, 255, 0); // forest not on fire -> green 
+            }
+            rectangleFill(w.blocks[i][j].x1, w.blocks[i][j].y1, w.blocks[i][j].x2, w.blocks[i][j].y2);
+```
+Simply checking the type of the block and getting the apropriate color using a switch will do the job. And then with the coordinates we previously defined draw a rectangle with this color.
 
 
  
