@@ -1,14 +1,15 @@
 My project will consiste on a simple World divided in smaller cells, that will each have a type,
-                                                                                                                                                    -0: empty
-                                                                                                                                                    -1: ash
-                                                                                                                                                    -2: forest
+- 0: empty
+- 1: ash
+- 2: forest
 
-> empty being a cell that hypothetically and visually don't change (white color), ash the successor of a forest on fire (grey color) and forest a cell that can catch fire (any other cell can't catch fire) (green color), a forest on fire will be a state in wich a forest can be in (red color).
+Empty being a cell that hypothetically and visually don't change (white color), ash the successor of a forest on fire (grey color) and forest a cell that can catch fire (any other cell can't catch fire) (green color), a forest on fire will be a state in wich a forest can be in (red color).
 
 The concept of the program is to simulate with various factors and events the propagation of a wild fire in a forest.
 Assuming that the fire will be passed to a nearby forest cell if one of it's four adjacent cells is on fire:
 
 ```diff
+
 
             time: t         | empty  |+forest |+forest |+forest |
                             | -fire  |+forest | empty  |+forest | 
