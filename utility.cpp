@@ -6,8 +6,11 @@
 //
 
 #include "utility.h"
+#include<Grapic.h>
 #include <math.h>
+#include<cmath>
 
+using namespace grapic;
 
 // functions for Color
 
@@ -40,11 +43,12 @@ int check_neighbors(block& b)
 
 // functions for World
 
-void world_init(World& w)
+void world_init(World& w, int DIMW)
 {
-
-    w.size = 100;
-    w.forest_nb = 0.5 * w.size;
+    int tmp_x, tmp_y;
+    w.size = 50;
+    w.forest_nb = round(0.5 * w.size*w.size);
+    w.DIMW = DIMW;
 
     for (int i = 0; i < w.size; i++)
     {
@@ -60,10 +64,36 @@ void world_init(World& w)
         }
     }
 
-    
+    for (int i = 0; i < w.forest_nb; i++)
+    {
+        do
+        {
+            tmp_x = rand() % w.size;
+            tmp_y = rand() % w.size;
+        }while(w.blocks[tmp_x][tmp_y].type != 0);
+        w.blocks[tmp_x][tmp_y].type = 2;
+    }
 
 }
 
 void world_draw(World w)
 {
+    for (int i = 0; i < w.size; i++)
+    {
+        for (int j = 0; j < w.size; j++)
+        {
+            switch(w.blocks[i][j].type)
+            {
+                case 0:
+                    color(255, 255, 255); // empty -> white
+                    break;
+                case 1:
+                    color(45, 45, 45); // ash -> grey
+                case 2:
+                    if (w.blocks[i][j].onfire) color(255, 0, 0); // forest on fire -> red
+                    else color(0, 255, 0); // forest not on fire -> green 
+            }
+            rectangleFill(w.blocks[i][j].x1, w.blocks[i][j].y1, w.blocks[i][j].x2, w.blocks[i][j].y2);
+        }
+    }
 }

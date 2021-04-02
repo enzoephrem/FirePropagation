@@ -12,12 +12,15 @@ int main(int , char**)
     bool stop = false;
     winInit("Fire in a Forest",DIMW,DIMW);
     backgroundColor(255,200,100);
-    
+    srand(time(NULL));
+
+    World my_world;
+    world_init(my_world, DIMW);
+
     while(!stop)
     {
         winClear();
-        color(255, 255, 100);
-        print(DIMW/2, DIMW/2, "test6");
+        world_draw(my_world);
         stop = winDisplay();
     }
     

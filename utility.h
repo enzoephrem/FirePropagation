@@ -10,8 +10,7 @@
 
 #include <stdio.h>
 
-int const MAX_SIZE = 150;
-int const MAX = 10;
+int const MAX = 100;
 
 
 
@@ -56,7 +55,7 @@ struct World
     block blocks[MAX][MAX];
 };
 
-void world_init(World& w);
+void world_init(World& w, int DIMW);
 void world_draw(World w);
 
 #endif
