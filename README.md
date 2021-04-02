@@ -9,7 +9,7 @@ The concept of the program is to simulate with various factors and events the pr
 Assuming that the fire will be passed to a nearby forest cell if one of it's four adjacent cells is on fire:
 
 ```diff
-+ green
+sfvdf + green fdv
 
             time: t         | empty  |+forest |+forest |+forest |
                             | -fire  |+forest | empty  |+forest | 
