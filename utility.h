@@ -55,7 +55,8 @@ struct World
     block blocks[MAX][MAX];
 };
 
-void world_init(World& w, int DIMW);
+void world_init(World& w);
 void world_draw(World w);
+void world_update(World& w);
 
 #endif

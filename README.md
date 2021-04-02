@@ -11,11 +11,8 @@ Assuming that the fire will be passed to a nearby forest cell if one of it's fou
 ```diff
 
 
-            time: t 
-
-                            | empty  |+forest |+forest |+forest |
-                            |--------|--------|--------|--------|
-                            | -fire  |+forest | empty  |+forest | 
+            time: t         | empty  |+forest |+forest |+forest |
+                            | fire  |+forest | empty  |+forest | 
                             |+forest |+forest |+forest | empty  |
                             |+forest |+forest |+forest |+forest |
                             | empty  |+forest | -fire  |+forest |
@@ -37,7 +34,7 @@ In the process of the propagation of the fire will come in a factor/event of *Ra
 
 With each block having different types and states, for each of the blocks in a world we will have to look at it's neighbours to predict the next type it will have.
 
-First of all, let's begin by initializing the World having **size** number of block with **forest_nb** of forest (in a kind of way that is the density of the World) and obviously **size**-**forest_nb** of empty blocks. The initialization will be at random.
+First of all, let's begin by initializing the World having **size** number of block with **forest_nb** of forest (in a kind of way that is the density of the World) and obviously **size** - **forest_nb** of empty blocks. The initialization will be at random.
 
 
 Let's initialize the size of the world **size** (here 50), the number of forest **nb_forest** (around a density of 50%) and DIMW the size of the window.
