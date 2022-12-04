@@ -215,3 +215,7 @@ Now that we know how to acces all the neighbors of a given block, we can itterat
 
 In addition to the update of each cell, let's also give the ability for the user to make it rain. To do so let's get first of all by a left click the *i* and *j* indexes of the clicked cells,
 in the **World.blocks[i][j]** table.
+
+
+
+PS: This project includes the [Grapic](https://perso.liris.cnrs.fr/alexandre.meyer/grapic/html/index.html) library.
