@@ -1,3 +1,6 @@
+![upscale_block.png](ressources/ScShot1.png)
+
+
 My project will consist on a simple World divided in smaller cells/blocks, that will each have a type,
 - 0: empty
 - 1: ash
